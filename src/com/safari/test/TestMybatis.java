@@ -21,17 +21,14 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 查询所有
-		listAll(session);
-
+		// 模糊查询
+		List<Category> cs = session.selectList("listCategoryByName", "修");
+		for (Category c : cs) {
+			System.out.println(c.getName());
+		}
+		
 		session.commit();
 		session.close();
 	}
 
-	private static void listAll(SqlSession session) {
-		List<Category> cs = session.selectList("listCategory");
-		for (Category c : cs) {
-			System.out.println(c.getName());
-		}
-	}
 }

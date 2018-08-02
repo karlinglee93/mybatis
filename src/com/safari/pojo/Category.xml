@@ -25,5 +25,10 @@
 	<select id="listCategory" resultType="Category">
 		select * from category_
 	</select>
+	
+	<select id="listCategoryByName"  parameterType="string" resultType="Category">
+		select * from category_ where name like concat('%',#{0},'%')
+	</select>    
+	
 </mapper>
 
