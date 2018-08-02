@@ -21,12 +21,7 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 修改id = 2的名称
-		// 和selectOne 一样，有些懵
-		Category c = session.selectOne("getCategory", 2);
-		c.setName("修改了category2的名字");
-		session.update("updateCategory", c);
-		
+		// 查询所有
 		listAll(session);
 
 		session.commit();
