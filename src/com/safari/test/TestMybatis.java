@@ -21,12 +21,16 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 删除id == 3的对象
-		Category c = new Category();
-		c.setId(3);
-		session.delete("deleteCategory", c);
+		// 获取id = 2的记录
+		Category c = session.selectOne("getCategory", 2);
+		
+		// 输出结果为空，不知为何
+//		Category c = new Category();
+//		c.setId(2);
+//		session.selectOne("getCategory", c.getId());
 
-		listAll(session);
+		System.out.println(c.getName());
+//		listAll(session);
 
 		session.commit();
 		session.close();
