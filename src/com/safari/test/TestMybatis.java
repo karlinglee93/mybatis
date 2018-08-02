@@ -21,16 +21,13 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 获取id = 2的记录
+		// 修改id = 2的名称
+		// 和selectOne 一样，有些懵
 		Category c = session.selectOne("getCategory", 2);
+		c.setName("修改了category2的名字");
+		session.update("updateCategory", c);
 		
-		// 输出结果为空，不知为何
-//		Category c = new Category();
-//		c.setId(2);
-//		session.selectOne("getCategory", c.getId());
-
-		System.out.println(c.getName());
-//		listAll(session);
+		listAll(session);
 
 		session.commit();
 		session.close();
