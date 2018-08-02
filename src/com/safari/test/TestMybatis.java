@@ -2,7 +2,9 @@ package com.safari.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -21,8 +23,12 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 模糊查询
-		List<Category> cs = session.selectList("listCategoryByName", "修");
+		// 多条件查询
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", 1);
+		params.put("name", "cat");
+		
+		List<Category> cs = session.selectList("listCategoryByIdAndName",params);
 		for (Category c : cs) {
 			System.out.println(c.getName());
 		}
