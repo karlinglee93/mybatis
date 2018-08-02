@@ -21,10 +21,10 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 通过session.insert调用addCategory对应的SQL语句
+		// 删除id == 3的对象
 		Category c = new Category();
-		c.setName("新增加的Category");
-		session.insert("addCategory", c);
+		c.setId(3);
+		session.delete("deleteCategory", c);
 
 		listAll(session);
 
