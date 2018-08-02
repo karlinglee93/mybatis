@@ -21,12 +21,21 @@ public class TestMybatis {
 		// 根据SqlSessionFactory 得到session
 		SqlSession session = sqlSessionFactory.openSession();
 
-		// 通过session的selectList方法，调用sql语句listCategory
-		// 最后得到一个Category集合，遍历即可看到数据
+		// 通过session.insert调用addCategory对应的SQL语句
+		Category c = new Category();
+		c.setName("新增加的Category");
+		session.insert("addCategory", c);
+
+		listAll(session);
+
+		session.commit();
+		session.close();
+	}
+
+	private static void listAll(SqlSession session) {
 		List<Category> cs = session.selectList("listCategory");
 		for (Category c : cs) {
 			System.out.println(c.getName());
 		}
-
 	}
 }

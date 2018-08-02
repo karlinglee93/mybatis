@@ -3,9 +3,27 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	<mapper namespace="com.safari.pojo">
-	    <!-- id:listCategory进行标示以供后续代码调用 -->
-	    <select id="listCategory" resultType="Category">
-	        select * from category_      
-	    </select>
-	</mapper>
+<mapper namespace="com.safari.pojo">
+	<!-- addCategory对应的插入sql语句，#{name}会自动获取c对象的name属性值 -->
+	<insert id="addCategory" parameterType="Category">
+		insert into category_ (name) values (#{name})
+	</insert>
+
+	<delete id="deleteCategory" parameterType="Category">
+		delete from category_ where id = #{id}
+	</delete>
+
+	<select id="getCategory" parameterType="_int"
+		resultType="Category">
+		select * from category_ where id = #{id}
+	</select>
+
+	<update id="updateCategory" parameterType="Category">
+		update category_ set name=#{name} where id = #{id}
+	</update>
+
+	<select id="listCategory" resultType="Category">
+		select * from category_
+	</select>
+</mapper>
+
