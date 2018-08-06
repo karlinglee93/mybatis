@@ -4,24 +4,27 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-	  <!-- 别名 - 自动扫描com.safari.pojo下的类型 -->
-	  <package name="com.safari.pojo"/>
+		<!-- 别名 - 自动扫描com.safari.pojo下的类型 -->
+		<package name="com.safari.pojo" />
 	</typeAliases>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <!-- 提供连接数据库的驱动/数据库名称/编码方式/账号密码 -->
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/how2java?characterEncoding=UTF-8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="wsljn123"/>
-            </dataSource>
-        </environment>
-    </environments>
-    <!-- 映射 -->
-    <mappers>
-        <mapper resource="com/safari/pojo/Category.xml"/>
-		<mapper resource="com/safari/pojo/Product.xml"/>
-    </mappers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- 提供连接数据库的驱动/数据库名称/编码方式/账号密码 -->
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://localhost:3306/how2java?characterEncoding=UTF-8" />
+				<property name="username" value="root" />
+				<property name="password" value="wsljn123" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 映射 -->
+	<mappers>
+		<mapper resource="com/safari/pojo/Category.xml" />
+		<mapper resource="com/safari/pojo/Product.xml" />
+		<mapper resource="com/safari/pojo/Order.xml" />
+		<mapper resource="com/safari/pojo/OrderItem.xml" />
+	</mappers>
 </configuration>
