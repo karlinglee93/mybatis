@@ -22,5 +22,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <!-- 映射 -->
     <mappers>
         <mapper resource="com/safari/pojo/Category.xml"/>
+		<mapper resource="com/safari/pojo/Product.xml"/>
     </mappers>
 </configuration>
